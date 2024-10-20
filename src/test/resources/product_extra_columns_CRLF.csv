@@ -1,0 +1,6 @@
+date,productId,currency,price,col1,col2,col3
+20160101,1,EUR,10.0,,,
+20160101,2,EUR,20.1,sdfb,srg,aerthe
+20160101,1,EUR,20.2,srg,aerthe,
+20160101,2,EUR,20.3,dfg,,aerthe
+20160101,1,EUR,20.4,,sdfgw,sreg

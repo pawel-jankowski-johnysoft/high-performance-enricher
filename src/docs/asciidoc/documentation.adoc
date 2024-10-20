@@ -1,0 +1,30 @@
+= API Documentation
+
+== Enrich Products
+
+=== Request Body
+
+The request contains a CSV file with the following columns:
+
+- `date`: Date written in format `yyyyMMdd`
+- `productId`: product id
+- `currency`: The currency of the product
+- `price`: The product's price
+
+Example requests:
+
+- plain http:
+include::{snippets}/enriched_products/http-request.adoc[]
+- curl:
+include::{snippets}/enriched_products/curl-request.adoc[]
+=== Response Body
+
+The response contains a CSV file with replaced product id by it's name:
+
+- `date`: Date written in format `yyyyMMdd`
+- `productName`: product's name
+- `currency`: The currency of the product
+- `price`: The product's price
+
+Example response
+include::{snippets}/enriched_products/http-response.adoc[]
