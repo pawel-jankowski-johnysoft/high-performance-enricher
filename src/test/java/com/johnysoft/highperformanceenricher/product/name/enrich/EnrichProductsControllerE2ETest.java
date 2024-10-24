@@ -3,6 +3,7 @@ package com.johnysoft.highperformanceenricher.product.name.enrich;
 import io.restassured.RestAssured;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -31,7 +32,7 @@ class EnrichProductsControllerE2ETest {
         RestAssured.baseURI = "http://localhost";
     }
 
-    @Test
+    @RepeatedTest(1000)
     @SneakyThrows
     void eachEnrichedRowShouldBeInNewLine() {
         var responseBody = given().contentType("text/csv")
@@ -43,7 +44,7 @@ class EnrichProductsControllerE2ETest {
         var lines = enrichedProducts(responseBody);
 
         assertThat(lines)
-                .containsExactlyInAnyOrderElementsOf(of("20160101,Cola,EUR,10.0", "20160101,Fish,EUR,20.1"));
+                .containsExactlyElementsOf(of("20160101,Cola,EUR,10.0", "20160101,Fish,EUR,20.1"));
     }
 
     private List<String> enrichedProducts(InputStream responseBody) {
