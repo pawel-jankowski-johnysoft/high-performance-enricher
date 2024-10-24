@@ -24,7 +24,7 @@ class ProductsTemporaryCSVStorage {
 
     private static final String[] HEADERS = {"date", "productName", "currency", "price"};
     private final Path csvFile;
-    private final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     void save(final List<EnrichProductsProcessor.EnrichedProduct> enrichedProducts) {
         executor.submit(() -> toFile(enrichedProducts));
