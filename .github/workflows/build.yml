@@ -23,6 +23,7 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64
+          provenance: false
           tags: ${{ secrets.ECR_REGISTRY }}/high_performance_enricher:latest
       - name: Create Dockerrun.aws.json
         run: |
